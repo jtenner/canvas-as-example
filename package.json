@@ -1,0 +1,26 @@
+{
+  "name": "test-canvas-as",
+  "version": "1.0.0",
+  "main": "src/index.html",
+  "license": "MIT",
+  "dependencies": {
+    "assemblyscript": "assemblyscript/assemblyscript",
+    "canvas-as": "jtenner/canvas-as",
+    "regenerator-runtime": "^0.13.1"
+  },
+  "scripts": {
+    "start": "run-s asbuild watch",
+    "watch": "run-p parcel:watch asbuild:watch",
+    "asbuild:watch": "onchange \"assembly/**/*.ts\" -- npm run asbuild",
+    "parcel:watch": "parcel src/index.html --out-dir dist",
+    "asbuild:untouched": "asc assembly/index.ts -b build/untouched.wasm -t build/untouched.wat --sourceMap --validate --debug",
+    "asbuild:optimized": "asc assembly/index.ts -b build/optimized.wasm -t build/optimized.wat --sourceMap --validate --optimize",
+    "asbuild": "npm run asbuild:untouched && npm run asbuild:optimized"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5",
+    "onchange": "^5.2.0",
+    "parcel-bundler": "^1.11.0",
+    "typescript": "^3.2.2"
+  }
+}
