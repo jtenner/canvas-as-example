@@ -1187,7 +1187,7 @@ caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000921:
 
 canvas-as@jtenner/canvas-as:
   version "1.0.0"
-  resolved "https://codeload.github.com/jtenner/canvas-as/tar.gz/2e652eb82766442d34b0e2fc21d32964f07411fa"
+  resolved "https://codeload.github.com/jtenner/canvas-as/tar.gz/dc48cec264beff4940a5e8c33fb10d7c4816643a"
   dependencies:
     assemblyscript "github:assemblyscript/assemblyscript"
 
