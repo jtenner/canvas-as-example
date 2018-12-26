@@ -947,6 +947,11 @@ binaryen@52.0.0-nightly.20181108:
   resolved "https://registry.yarnpkg.com/binaryen/-/binaryen-52.0.0-nightly.20181108.tgz#c9c58420384221071992bcb73b0b0aa17b8b8e60"
   integrity sha512-EPCTNikr5NWz63au0pIrt8snmt+Fv/YERiDD/BQIT9I0jLYB11m/oMuUA5k5kMCLsfTc2w7Sma4jKVu7VR/owA==
 
+binaryen@55.0.0-nightly.20181130:
+  version "55.0.0-nightly.20181130"
+  resolved "https://registry.yarnpkg.com/binaryen/-/binaryen-55.0.0-nightly.20181130.tgz#67159e12073d8195813057714754727320521b3d"
+  integrity sha512-RfMiI0vavw7Sy7KX8h1xOs4D3zp9nehmtE87DSfY6nXyd2EAdMwJ97tWdepuhOc6JWZsntOfzUA2fqu/sYTTLg==
+
 bindings@~1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/bindings/-/bindings-1.2.1.tgz#14ad6113812d2d37d72e67b4cacb4bb726505f11"
@@ -1182,7 +1187,7 @@ caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000921:
 
 canvas-as@jtenner/canvas-as:
   version "1.0.0"
-  resolved "https://codeload.github.com/jtenner/canvas-as/tar.gz/00184846f667f20521afea0cde7406982a8fc9fe"
+  resolved "https://codeload.github.com/jtenner/canvas-as/tar.gz/2e652eb82766442d34b0e2fc21d32964f07411fa"
   dependencies:
     assemblyscript "github:assemblyscript/assemblyscript"
 
