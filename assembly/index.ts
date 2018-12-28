@@ -14,7 +14,7 @@ export function update(): void {
 export function draw(): Float64Array {
   ctx.clearRect(0, 0, 800, 600);
   if (TextureMap.has("kitten")) {
-    var kitten: Image =  TextureMap.get("kitten");
+    var kitten: Image = TextureMap.get("kitten");
     ctx.drawImagePosition(kitten, 100.0, 100.0);
     ctx.fillStyle = "red";
     ctx.fillText("Loaded a kitten!", 300.0, 300.0);
