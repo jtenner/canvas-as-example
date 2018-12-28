@@ -11,7 +11,7 @@ npm install
 npm start
 ```
 
-This sets up the `parcel serve` command to deliver your assemblyscript application example.
+This sets up the `webpack-dev-server` command to deliver your assemblyscript application example.
 
 # Usage
 
