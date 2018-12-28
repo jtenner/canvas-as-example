@@ -1,11 +1,6 @@
 import { CanvasASInterop } from "canvas-as";
-const fs = require("fs");
-
-const result: Buffer = fs.readFileSync("./build/untouched.wasm");
-const blob: Blob = new Blob([result], { type: "application/wasm" });
-const url: string = URL.createObjectURL(blob);
-const ctx: CanvasRenderingContext2D = (document.createElement("canvas") || document.querySelector("canvas"))
-  .getContext("2d")!;
+const canvas: HTMLCanvasElement = document.querySelector("canvas") || document.createElement("canvas");
+const ctx: CanvasRenderingContext2D = canvas.getContext("2d")!;
 ctx.canvas.width = 800;
 ctx.canvas.height = 600;
 
@@ -14,10 +9,20 @@ if (!ctx.canvas.parentElement) {
 }
 
 async function main(): Promise<void> {
-  const interop: CanvasASInterop = new CanvasASInterop(ctx, fetch(url), {});
+  const interop: CanvasASInterop<any> = new CanvasASInterop<any>(ctx, fetch("../build/optimized.wasm"), {});
   await interop.loaded;
-  interop.update();
-  interop.draw();
+  interop.injectImage("kitten", fetch("https://placekitten.com/400/300"));
+  var target = window as any;
+
+  function frame() {
+    requestAnimationFrame(target.frame);
+    interop.update();
+    interop.draw();
+  }
+  if (!target.frame) {
+    requestAnimationFrame(frame);
+  }
+  target.frame = frame;
 }
 
 main();
