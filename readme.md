@@ -4,13 +4,6 @@ This is a very simple canvas-as framework example provided with the MIT license.
 
 # Setup
 
-Via Yarn:
-
-```
-yarn
-yarn start
-```
-
 via NPM:
 
 ```
