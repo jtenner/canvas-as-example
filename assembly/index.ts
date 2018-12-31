@@ -1,18 +1,13 @@
 import "allocator/tlsf";
-import { CanvasRenderingContext2D, TextureMap, Image  } from "../node_modules/canvas-as/assembly/index";
+import { OptimizedCanvasRenderingContext2D, TextureMap, Image, CanvasMap  } from "../node_modules/canvas-as/assembly";
 
-var ctx: CanvasRenderingContext2D = new CanvasRenderingContext2D();
-
+var ctx: OptimizedCanvasRenderingContext2D;
 export function init(): void {
-  ctx.init();
+  ctx = CanvasMap.getOptimized("main");
 }
 
-export function update(): void {
-
-}
-
-export function draw(): Float64Array {
-  ctx.clearRect(0, 0, 800, 600);
+export function draw(): void {
+  ctx.clearRect(0.0, 0.0, 800.0, 600.0);
   if (TextureMap.has("kitten")) {
     var kitten: Image = TextureMap.get("kitten");
     ctx.drawImagePosition(kitten, 100.0, 100.0);
@@ -23,7 +18,7 @@ export function draw(): Float64Array {
     ctx.fillRect(100.0, 100.0, 400.0, 300.0);
   }
 
-  return ctx.commit();
+  ctx.commit();
 }
 
 export { memory }

@@ -1,4 +1,4 @@
-import { CanvasASInterop } from "canvas-as";
+import { instantiateStreaming, CanvasASInterop } from "canvas-as";
 const canvas: HTMLCanvasElement = document.querySelector("canvas") || document.createElement("canvas");
 const ctx: CanvasRenderingContext2D = canvas.getContext("2d")!;
 ctx.canvas.width = 800;
@@ -9,15 +9,16 @@ if (!ctx.canvas.parentElement) {
 }
 
 async function main(): Promise<void> {
-  const interop: CanvasASInterop<any> = new CanvasASInterop<any>(ctx, fetch("../build/optimized.wasm"), {});
-  await interop.loaded;
-  interop.injectImage("kitten", fetch("https://placekitten.com/400/300"));
+  const interop: CanvasASInterop<any> = await instantiateStreaming<any>(fetch("../build/untouched.wasm"), {});
+
+  interop.useContext("main", ctx)
+    .useImage("kitten", fetch("https://placekitten.com/400/300"));
   var target = window as any;
 
+  interop.wasm.init();
   function frame() {
     requestAnimationFrame(target.frame);
-    interop.update();
-    interop.draw();
+    interop.wasm.draw();
   }
   if (!target.frame) {
     requestAnimationFrame(frame);
